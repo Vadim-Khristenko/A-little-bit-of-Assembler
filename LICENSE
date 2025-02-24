@@ -1,21 +1,72 @@
-MIT License
+Creative Commons Attribution-NonCommercial 4.0 International License
 
-Copyright (c) 2025 Вадим Христенко
+Copyright (c) 2025-present Vadim Khristenko
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This work is licensed under Creative Commons Attribution-NonCommercial 4.0
+International License. To view a copy of this license, visit:
+http://creativecommons.org/licenses/by-nc/4.0/
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+LICENSE VERSIONING:
+- Each release of this project is bound to the license version active at the time of release
+- License terms may change with new releases
+- Changes to the license will be announced in release notes
+- Old releases retain their original license terms even if newer releases use updated terms
+- License changes are not retroactive to previous releases
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+PERMISSIONS:
+- Copy and distribute materials in any format
+- Modify, adapt and create derivative works
+- Use code parts and materials in non-commercial projects
+- Use for educational purposes
+- Contribute to the project via pull requests
+- Fork the project while maintaining license conditions
+
+CONDITIONS:
+1. Attribution
+   - Mandatory attribution to author (Vadim Khristenko)
+   - Link to original repository
+   - Indicate if changes were made
+   - Include license reference
+
+2. Non-Commercial Use
+   - Commercial use requires written permission
+   - No paid courses without authorization
+   - No inclusion in paid products
+
+STRICTLY PROHIBITED:
+- Creation of malicious software
+- Illegal activities
+- CSAM-related materials
+- Scam schemes
+- Claiming work as your own
+- Removing/altering copyright information
+- Distribution without attribution
+- Using materials to promote hate or discrimination
+- Restricting access to educational resources based on political, racial, 
+  religious or other factors
+
+PROJECT CONTRIBUTIONS:
+- Everyone can contribute via pull requests
+- All changes must align with project spirit and goals
+- No political statements or hate-inciting content
+- We support freedom of education and universal access to knowledge
+
+LICENSE TERMINATION:
+License automatically terminates if:
+- Materials are used to incite hatred
+- Access to educational resources is restricted
+- Any other license terms are violated
+
+COMMERCIAL USE:
+For commercial use permission:
+1. Contact author
+2. Obtain written consent
+3. Agree on terms of use
+
+Contact for commercial use inquiries:
+vadim.khristenko@gmail.com
+https://t.me/VAI_Programmer
+
+DISCLAIMER:
+Materials provided "as is" without warranties. Author bears no responsibility
+for consequences of material use.
