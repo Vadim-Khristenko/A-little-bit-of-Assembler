@@ -1,0 +1,141 @@
+# Site Configuration
+site_name: A little bit of Assembler
+site_url: https://vadim-khristenko.github.io/A-little-bit-of-Assembler
+site_author: Vadim Khristenko
+
+# Repository Settings
+repo_name: A-little-bit-of-Assembler
+repo_url: https://github.com/Vadim-Khristenko/A-little-bit-of-Assembler
+
+# Theme Configuration
+theme:
+  name: material
+  language: en
+  features:
+  # Navigation
+  - navigation.instant
+  - navigation.instant.progress
+  - navigation.sections
+  - navigation.language
+
+  # Search
+  - search.suggest
+  - search.highlight
+  - search.share
+
+  # Content
+  - content.code.copy
+  - content.tooltips
+
+  # Color Schemes
+  palette:
+    # Dark mode (default)
+    - scheme: slate
+      primary: "#16002b"
+      accent: "rgba(225, 130, 10, 0.855)"
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      custom:
+        background: "#07000f"
+        primary-fg: "#e6e6e6"
+
+    # Light mode
+    - scheme: default
+      primary: "#98c1ff"
+      accent: "rgba(55, 125, 135, 0.95)"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      custom:
+        background: "#f3f6ff"
+        primary-fg: "#2c2c2c"
+
+extra:
+  # Multi-language Support
+  alternate:
+  - name: English
+    link: /
+    lang: en
+  - name: Русский
+    link: /ru/
+    lang: ru
+  language:
+  - en: English
+  - ru: Русский
+
+  # Comments Integration
+  script:
+  - |
+    <script src="https://giscus.app/client.js"
+            data-repo="Vadim-Khristenko/A-little-bit-of-Assembler"
+            data-repo-id="R_kgDON-3l9w"
+            data-category=""
+            data-category-id=""
+            data-mapping="url"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_high_contrast"
+            data-lang: "{{ 'ru' if lang.t('language') == 'ru' else 'en' }}"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+# Directory Structure
+docs_dir: test-book-src
+nav:
+- index.md
+- getting-started.md
+
+# JavaScript Dependencies
+extra_javascript:
+- https://giscus.app/client.js
+- https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+# CSS Dependencies
+extra_css:
+- theme/css/extra.css
+
+# Markdown Extensions
+markdown_extensions:
+# Base Extensions
+- admonition
+- abbr
+- attr_list
+- md_in_html
+
+# Code Highlighting
+- pymdownx.highlight:
+    anchor_linenums: true
+    line_spans: __span
+    pygments_lang_class: true
+- pymdownx.inlinehilite
+
+# Enhanced Features
+- pymdownx.details
+- pymdownx.snippets
+- pymdownx.keys
+- pymdownx.mark
+- pymdownx.critic
+- pymdownx.tilde
+
+# Special Features
+- pymdownx.arithmatex:
+    generic: true
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji ""
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg ""
+- pymdownx.tabbed:
+    alternate_style: true
+
+# Diagrams
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:pymdownx.superfences.fence_code_format ""

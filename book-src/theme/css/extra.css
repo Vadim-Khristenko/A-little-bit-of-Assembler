@@ -1,0 +1,117 @@
+/* Dark theme customization */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #07000f;
+  --md-primary-fg-color: #16002b;
+  --md-accent-fg-color: rgba(225, 130, 10, 0.855);
+
+  /* Button styles */
+  --md-button-bg-color: #2a0049;
+  --md-button-hover-bg-color: #3b006b;
+  --md-button-primary-bg-color: #4a0080;
+  --md-button-primary-hover-bg-color: #5c00a3;
+
+  /* Link styles */
+  --md-typeset-a-color: rgba(255, 140, 0, 0.95);
+  --md-link-color: rgba(255, 140, 0, 0.95);
+}
+
+/* Light theme customization */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #f3f6ff;
+  --md-primary-fg-color: #98c1ff;
+  --md-accent-fg-color: rgba(55, 125, 135, 0.95);
+
+  /* Button styles */
+  --md-button-bg-color: #e6e6fa;
+  --md-button-hover-bg-color: #d8d8ff;
+  --md-button-primary-bg-color: #a9a9ff;
+  --md-button-primary-hover-bg-color: #9292ff;
+
+  /* Link styles */
+  --md-typeset-a-color: rgb(71, 101, 247);
+  --md-link-color: rgb(71, 101, 247);
+}
+
+/* Social Media Colors */
+.telegram-color {
+  color: #26A5E4 !important;
+}
+
+.youtube-color {
+  color: #FF0000 !important;
+}
+
+.spotify-color {
+  color: #1DB954 !important;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(45deg, #FF0000, #800080);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom Button Styles */
+.md-button {
+  background-color: var(--md-button-bg-color);
+  color: var(--md-primary-fg-color--light);
+  transition: all 0.2s ease-in-out;
+}
+
+.md-button:hover {
+  background-color: var(--md-button-hover-bg-color);
+  transform: translateY(-2px);
+}
+
+.md-button--primary {
+  background-color: var(--md-button-primary-bg-color);
+}
+
+.md-button--primary:hover {
+  background-color: var(--md-button-primary-hover-bg-color);
+}
+
+/* Social Media Buttons */
+.social-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.social-btn:hover {
+  transform: scale(1.05);
+}
+
+.telegram-btn {
+  background-color: #26A5E4;
+  color: white !important;
+}
+
+.youtube-btn {
+  background-color: #FF0000;
+  color: white !important;
+}
+
+.spotify-btn {
+  background-color: #1DB954;
+  color: white !important;
+}
+
+/* Enhanced link styles */
+.md-typeset a {
+  font-weight: 500;
+  text-decoration-thickness: 1px;
+  transition: all 0.2s ease-in-out;
+}
+
+.md-typeset a:hover {
+  text-decoration-thickness: 2px;
+  filter: brightness(120%);
+}
