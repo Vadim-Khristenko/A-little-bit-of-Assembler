@@ -78,3 +78,6 @@ Full license text available in [LICENSE](LICENSE).
 For commercial use inquiries and questions:
 - Email: vadim.khristenko@gmail.com
 - Telegram: https://t.me/VAI_Programmer
+
+_Just banner with Miku_
+![Hatsune Miku 0001 Banner](/book-src/images/1-Banner-Miku.png)
