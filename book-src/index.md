@@ -273,11 +273,9 @@ no_comments: true
       user-select: none;
       transition: transform 0.3s ease;
       padding: 0.2em 0.4em;
-      /* Используем прозрачный текстовый цвет */
       color: transparent;
   }
 
-  /* Псевдоэлемент ::before для создания эффекта */
   .title::before {
       content: "A LITTLE BIT OF ASSEMBLER";
       position: absolute;
@@ -289,32 +287,29 @@ no_comments: true
       background-size: 300% 300%;
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent; /* Прозрачный текст для градиента */
+      color: transparent;
       animation: gradientFlow 8s ease infinite;
       z-index: 2;
-      transform: translateZ(30px);
+      transform: translateZ(60px);
       text-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.3);
       font-weight: 800;
       transition: text-shadow 0.3s ease;
-      white-space: normal; /* Разрешаем перенос */
-      word-wrap: break-word; /* Перенос длинных слов */
+      white-space: normal;
+      word-wrap: break-word;
   }
 
-  /* Адаптивная анимация градиента */
   @keyframes gradientFlow {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
   }
 
-  /* Темная тема */
   .theme-dark .title::before {
-      --text-shadow-color: rgba(var(--accent-color-rgb), 0.5); /* Переменная для тени */
+      --text-shadow-color: rgba(var(--accent-color-rgb), 0.5);
       text-shadow: 0 0 20px var(--text-shadow-color);
   }
 
-  /* Светлая тема */
   .theme-light .title::before {
-      --text-shadow-color: rgba(var(--primary-color-rgb), 0.5); /* Переменная для тени */
+      --text-shadow-color: rgba(var(--primary-color-rgb), 0.5);
       text-shadow: 0 0 15px var(--text-shadow-color);
   }
   
@@ -510,7 +505,7 @@ no_comments: true
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     border-left: 3px solid var(--accent-color);
     transition: all 0.3s ease;
-    overflow-x: auto; /* Включаем горизонтальную прокрутку */
+    overflow-x: auto;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -521,14 +516,13 @@ no_comments: true
     transform: translateY(-2px);
   }
 
-  /* Обеспечиваем полный фон при прокрутке */
   .code-snippet::after {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 40px; /* Градиент затухания справа */
+    width: 40px;
     background: linear-gradient(90deg, transparent, var(--code-bg));
     pointer-events: none;
     opacity: 0;
@@ -585,19 +579,18 @@ no_comments: true
     display: flex;
     flex-direction: column;
     line-height: 1.38;
-    z-index: 1; /* Добавляем z-index для видимости */
+    z-index: 1;
   }
   
   .code-content {
     margin-left: 45px;
     position: relative;
-    line-height: 1.6; /* Выравниваем высоту строк */
-    padding-top: 0; /* Убираем отступ для лучшего выравнивания */
-    min-height: 100%; /* Обеспечиваем минимальную высоту */
-    min-width: max-content; /* Важно для корректной горизонтальной прокрутки */
+    line-height: 1.6;
+    padding-top: 0;
+    min-height: 100%;
+    min-width: max-content;
   }
   
-  /* Исправляем отступы между строками для выравнивания */
   .code-line {
     display: block;
     margin-bottom: 0; 
@@ -605,9 +598,9 @@ no_comments: true
     font-family: 'JetBrains Mono', monospace;
     opacity: 0;
     animation: typeIn 0.5s forwards;
-    animation-delay: calc(var(--i, 0) * 0.1s); /* Добавляем последовательное появление */
-    position: relative; /* Добавляем позиционирование */
-    z-index: 2; /* Повышаем z-index для лучшей видимости */
+    animation-delay: calc(var(--i, 0) * 0.1s);
+    position: relative;
+    z-index: 2;
   }
   
   @keyframes typeIn {
@@ -615,7 +608,6 @@ no_comments: true
     to { opacity: 1; transform: translateX(0); }
   }
   
-  /* Улучшение цветов для светлой темы */
   .theme-light .keyword { color: #d7008a; }
   .theme-light .string { color: #937200; }
   .theme-light .comment { color: #0057a6; }
@@ -623,7 +615,6 @@ no_comments: true
   .theme-light .register { color: #6c00bd; }
   .theme-light .directive { color: #006f87; }
   
-  /* Цвета для темной темы */
   .theme-dark .keyword, .keyword { color: #ff79c6; }
   .theme-dark .string, .string { color: #f1fa8c; }
   .theme-dark .comment, .comment { color: #6272a4; }
@@ -631,7 +622,6 @@ no_comments: true
   .theme-dark .register, .register { color: #bd93f9; }
   .theme-dark .directive, .directive { color: #8be9fd; }
   
-  /* Исправляем цвета в светлой теме для строк номеров */
   .theme-light .line-numbers {
     color: rgba(0, 0, 0, 0.4);
     border-right-color: rgba(0, 0, 0, 0.15);
@@ -695,7 +685,6 @@ no_comments: true
     100% { transform: perspective(800px) scale3d(1, 1, 1); }
   }
   
-  /* Адаптация под мобильные устройства */
   @media (max-width: 768px) {
     .main-content {
       padding: 1rem;
@@ -712,10 +701,10 @@ no_comments: true
     }
     
     .title::before {
-      font-size: 2.2rem; /* Уменьшаем размер шрифта */
-      white-space: normal; /* Разрешаем перенос */
-      word-break: keep-all; /* Добавляем перенос по словам */
-      line-height: 1.2; /* Уменьшаем высоту строки */
+      font-size: 2.2rem; 
+      white-space: normal;
+      word-break: keep-all;
+      line-height: 1.2;
     }
     
     .subtitle {
@@ -723,7 +712,6 @@ no_comments: true
       margin-bottom: 2rem;
     }
     
-    /* Адаптированный код-блок для мобильных */
     .code-snippet {
       padding: 1.5rem 1rem;
       font-size: 0.85rem;
@@ -750,7 +738,6 @@ no_comments: true
       margin-left: 30px;
     }
     
-    /* Улучшаем отображение кнопок языка */
     .lang-buttons {
       flex-direction: column;
       gap: 1rem;
@@ -760,62 +747,58 @@ no_comments: true
       width: 100%;
     }
     
-    /* Улучшенный 3D-куб для мобильных устройств */
     .logo-container {
       width: 90px;
       height: 90px;
       margin: 0 auto 1.5rem;
-      /* Уменьшаем перспективу для более корректного отображения на мобильных */
       perspective: 900px; 
     }
     
     .logo-face {
-      border-width: 1px; /* Уменьшаем толщину границы */
+      border-width: 1px;
     }
     
     .logo {
       transform-style: preserve-3d;
-      /* Более плавная анимация для мобильных устройств */
       animation: rotate3d-mobile 12s infinite ease-in-out;
     }
     
     .theme-dark .logo-front,
     .theme-light .logo-front {
-      transform: translateZ(30px); /* Уменьшаем глубину */
-      font-size: 22px; /* Уменьшаем размер шрифта */
+      transform: translateZ(60px);
+      font-size: 22px; 
     }
     
     .theme-dark .logo-back,
     .theme-light .logo-back {
-      transform: rotateY(180deg) translateZ(30px); /* Уменьшаем глубину */
-      font-size: 22px; /* Уменьшаем размер шрифта */
+      transform: rotateY(180deg) translateZ(60px);
+      font-size: 22px; 
     }
     
     .theme-dark .logo-right,
     .theme-light .logo-right {
-      transform: rotateY(90deg) translateZ(30px); /* Уменьшаем глубину */
-      font-size: 16px; /* Уменьшаем размер шрифта */
+      transform: rotateY(90deg) translateZ(60px);
+      font-size: 16px; 
     }
     
     .theme-dark .logo-left,
     .theme-light .logo-left {
-      transform: rotateY(-90deg) translateZ(30px); /* Уменьшаем глубину */
-      font-size: 16px; /* Уменьшаем размер шрифта */
+      transform: rotateY(-90deg) translateZ(60px);
+      font-size: 16px; 
     }
     
     .theme-dark .logo-top,
     .theme-light .logo-top {
-      transform: rotateX(90deg) translateZ(30px); /* Уменьшаем глубину */
-      font-size: 18px; /* Уменьшаем размер шрифта */
+      transform: rotateX(90deg) translateZ(60px);
+      font-size: 18px; 
     }
     
     .theme-dark .logo-bottom,
     .theme-light .logo-bottom {
-      transform: rotateX(-90deg) translateZ(30px); /* Уменьшаем глубину */
-      font-size: 18px; /* Уменьшаем размер шрифта */
+      transform: rotateX(-90deg) translateZ(60px);
+      font-size: 18px; 
     }
     
-    /* Более плавная и менее требовательная анимация вращения для мобильных */
     @keyframes rotate3d-mobile {
       0%, 100% { transform: rotateY(0deg) rotateX(0deg); }
       25% { transform: rotateY(60deg) rotateX(10deg); }
@@ -824,13 +807,12 @@ no_comments: true
     }
   }
   
-  /* Еще более компактный вид для маленьких экранов */
   @media (max-width: 480px) {
     .logo-container {
       width: 80px;
       height: 80px;
       margin: 0 auto 1rem;
-      perspective: 800px; /* Еще меньше перспектива для малых экранов */
+      perspective: 800px;
     }
     
     .title {
@@ -838,7 +820,7 @@ no_comments: true
     }
     
     .title::before {
-      font-size: 1.8rem; /* Уменьшаем размер шрифта еще больше */
+      font-size: 1.8rem;
     }
     
     .code-snippet {
@@ -857,12 +839,11 @@ no_comments: true
       font-size: 0.8rem;
     }
     
-    /* Для самых маленьких экранов еще больше уменьшаем куб */
     .theme-dark .logo-front,
     .theme-light .logo-front,
     .theme-dark .logo-back,
     .theme-light .logo-back {
-      transform: translateZ(38px);
+      transform: translateZ(40px);
       font-size: 18px;
     }
     
@@ -870,7 +851,7 @@ no_comments: true
     .theme-light .logo-right,
     .theme-dark .logo-left,
     .theme-light .logo-left {
-      transform: rotateY(90deg) translateZ(38px);
+      transform: rotateY(90deg) translateZ(40px);
       font-size: 12px;
     }
     
@@ -882,7 +863,7 @@ no_comments: true
       font-size: 14px;
     }
     
-    /* Более простая анимация для самых маленьких экранов */
+
     .logo {
       animation: rotate3d-tiny 15s infinite ease-in-out;
     }
@@ -892,8 +873,6 @@ no_comments: true
       50% { transform: rotateY(180deg); }
     }
   }
-  
-  /* Класс для устройств с низкой производительностью */
   .low-performance-device .particle {
     display: none;
   }
@@ -1002,27 +981,27 @@ no_comments: true
 <script>
   window.giscusDisabled = true;
   
-  // Определение производительности устройства
+  
   function detectLowPerformanceDevice() {
-    // Проверка на мобильное устройство
+    
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
-    // Проверка на iOS (обычно более низкая производительность для некоторых анимаций)
+    
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     
-    // Проверка оперативной памяти (если доступно)
+    
     let lowRAM = false;
     if (navigator.deviceMemory) {
-      lowRAM = navigator.deviceMemory < 4; // меньше 4 ГБ памяти
+      lowRAM = navigator.deviceMemory < 4; 
     }
     
-    // Проверка числа логических процессоров
+    
     let lowCPU = false;
     if (navigator.hardwareConcurrency) {
-      lowCPU = navigator.hardwareConcurrency <= 4; // 4 или меньше ядер
+      lowCPU = navigator.hardwareConcurrency <= 4; 
     }
     
-    // Определяем низкую производительность на основе комбинации факторов
+    
     return (isMobile && (isIOS || lowRAM || lowCPU));
   }
   
@@ -1030,7 +1009,7 @@ no_comments: true
     if (detectLowPerformanceDevice()) {
       document.body.classList.add('low-performance-device');
       
-      // Уменьшаем количество анимаций и эффектов
+      
       const particlesContainer = document.getElementById('particles');
       if (particlesContainer) {
         particlesContainer.style.display = 'none';
@@ -1046,7 +1025,7 @@ no_comments: true
         matrixCode.style.display = 'none';
       }
       
-      // Упрощаем анимацию для кода
+      
       document.querySelectorAll('.code-line').forEach(line => {
         line.style.opacity = '1';
         line.style.transform = 'translateX(0)';
@@ -1057,11 +1036,11 @@ no_comments: true
   
   function createParticles() {
     const particlesContainer = document.getElementById('particles');
-    // Для мобильных устройств создаем меньше частиц
+    
     const isMobile = window.innerWidth <= 768;
     const particleCount = isMobile ? Math.min(30, Math.floor(window.innerWidth / 30)) : Math.min(100, Math.floor(window.innerWidth / 20));
     
-    // Если обнаружено устройство с низкой производительностью, не создаем частицы
+    
     if (detectLowPerformanceDevice()) {
       return;
     }
@@ -1090,13 +1069,13 @@ no_comments: true
   }
   
   function createBinaryRain() {
-    // Если обнаружено устройство с низкой производительностью, не создаем эффекты
+    
     if (detectLowPerformanceDevice()) {
       return;
     }
     
     const container = document.getElementById('binaryRain');
-    // Для мобильных устройств создаем меньше столбцов
+    
     const isMobile = window.innerWidth <= 768;
     const columnCount = isMobile ? Math.floor(window.innerWidth / 80) : Math.floor(window.innerWidth / 40);
     
@@ -1113,7 +1092,7 @@ no_comments: true
       column.style.animationDelay = `${delay}s`;
       
       let content = '';
-      // Для мобильных устройств создаем меньше строк
+      
       const length = isMobile ? Math.floor(Math.random() * 10 + 5) : Math.floor(Math.random() * 20 + 10);
       for (let j = 0; j < length; j++) {
         content += Math.random() > 0.5 ? '1' : '0';
@@ -1126,13 +1105,13 @@ no_comments: true
   }
   
   function createMatrixEffect() {
-    // Если обнаружено устройство с низкой производительностью, не создаем эффекты
+    
     if (detectLowPerformanceDevice()) {
       return;
     }
     
     const container = document.getElementById('matrixCode');
-    // Для мобильных устройств создаем меньше столбцов
+    
     const isMobile = window.innerWidth <= 768;
     const columnCount = isMobile ? 5 : 20;
     
@@ -1207,11 +1186,9 @@ no_comments: true
     if (window.ThemeManager) {
       const theme = window.ThemeManager.getTheme();
       applyThemeColors(theme === 'dark');
-      updateThemeToggleIcon(theme);
       
       window.ThemeManager.onThemeChange(function(theme) {
         applyThemeColors(theme === 'dark');
-        updateThemeToggleIcon(theme);
       });
     } else {
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1239,7 +1216,7 @@ no_comments: true
       root.style.setProperty('--primary-color-rgb', '22, 0, 43');
       root.style.setProperty('--accent-color-rgb', '255, 140, 0');
       
-      // Обновляем тему для блока кода
+      
       document.querySelector('.code-snippet')?.classList.remove('theme-light');
       document.querySelector('.code-snippet')?.classList.add('theme-dark');
     } else {
@@ -1254,12 +1231,12 @@ no_comments: true
       root.style.setProperty('--primary-color-rgb', '152, 193, 255');
       root.style.setProperty('--accent-color-rgb', '55, 125, 135');
       
-      // Обновляем тему для блока кода
+      
       document.querySelector('.code-snippet')?.classList.remove('theme-dark');
       document.querySelector('.code-snippet')?.classList.add('theme-light');
     }
     
-    // Обновляем классы темы для 3D лого
+    
     updateLogoTheme(isDark ? 'dark' : 'light');
   }
   
@@ -1290,15 +1267,6 @@ no_comments: true
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       applyThemeColors(newTheme === 'dark');
-      updateThemeToggleIcon(newTheme);
-    }
-  }
-  
-  function updateThemeToggleIcon(theme) {
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-      themeToggle.innerHTML = theme === 'dark' ? '☀️' : '🌙';
-      themeToggle.title = theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
     }
   }
   
@@ -1326,14 +1294,14 @@ no_comments: true
     initTheme();
     detectLanguageAndRedirect();
     
-    // Применяем тему к блоку кода при загрузке
+    
     const currentTheme = window.ThemeManager ? window.ThemeManager.getTheme() : 
       (document.documentElement.getAttribute('data-theme') || 
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
     
     document.querySelector('.code-snippet').classList.add(`theme-${currentTheme}`);
     
-    // Проверяем, что код-блок корректно отображается
+    
     setTimeout(() => {
       const codeLines = document.querySelectorAll('.code-line');
       codeLines.forEach(line => {
@@ -1366,10 +1334,10 @@ no_comments: true
       document.querySelector('.loader-container').style.display = 'none';
     }
     
-    // Применяем оптимизации производительности перед созданием анимаций
+    
     applyPerformanceOptimizations();
     
-    // В зависимости от устройства применяем разные стили для 3D куба
+    
     applyDeviceSpecificCubeStyles();
     
     if (typeof anime !== 'undefined' && !detectLowPerformanceDevice()) {
@@ -1402,20 +1370,20 @@ no_comments: true
       });
     }
     
-    // Запускаем анимацию кода с учетом производительности
+    
     animateCodeLines();
     
-    // Проверяем, нужна ли горизонтальная прокрутка для код-блока
+    
     checkCodeOverflow();
     
-    // Добавляем обработчик изменения размера экрана
+    
     window.addEventListener('resize', function() {
       checkCodeOverflow();
       applyDeviceSpecificCubeStyles();
     });
   });
   
-  // Функция для настройки стилей куба в зависимости от устройства
+  
   function applyDeviceSpecificCubeStyles() {
     const logoContainer = document.querySelector('.logo-container');
     const logo = document.querySelector('.logo');
@@ -1427,7 +1395,7 @@ no_comments: true
     const isSmallMobile = window.innerWidth <= 480;
     const isLowPerformanceDevice = detectLowPerformanceDevice();
     
-    // Применяем соответствующие классы
+    
     if (isLowPerformanceDevice) {
       logo.style.animation = 'rotate3d-simple 20s infinite linear';
     } else if (isSmallMobile) {
@@ -1438,23 +1406,23 @@ no_comments: true
       logo.style.animation = 'rotate3d 8s infinite ease-in-out';
     }
     
-    // Настраиваем размеры граней для корректной работы на разных устройствах
+    
     if (isSmallMobile) {
       faces.forEach(face => {
         if (face.classList.contains('logo-front') || face.classList.contains('logo-back')) {
           face.style.transform = face.classList.contains('logo-back') 
-            ? 'rotateY(180deg) translateZ(38px)' 
-            : 'translateZ(38px)';
+            ? 'rotateY(180deg) translateZ(40px)' 
+            : 'translateZ(40px)';
           face.style.fontSize = '18px';
         } else if (face.classList.contains('logo-top') || face.classList.contains('logo-bottom')) {
           face.style.transform = face.classList.contains('logo-bottom') 
-            ? 'rotateX(-90deg) translateZ(38px)' 
-            : 'rotateX(90deg) translateZ(38px)';
+            ? 'rotateX(-90deg) translateZ(40px)' 
+            : 'rotateX(90deg) translateZ(40px)';
           face.style.fontSize = '14px';
         } else {
           face.style.transform = face.classList.contains('logo-left') 
-            ? 'rotateY(-90deg) translateZ(38px)' 
-            : 'rotateY(90deg) translateZ(38px)';
+            ? 'rotateY(-90deg) translateZ(40px)' 
+            : 'rotateY(90deg) translateZ(40px)';
           face.style.fontSize = '12px';
         }
       });
@@ -1462,18 +1430,18 @@ no_comments: true
       faces.forEach(face => {
         if (face.classList.contains('logo-front') || face.classList.contains('logo-back')) {
           face.style.transform = face.classList.contains('logo-back') 
-            ? 'rotateY(180deg) translateZ(30px)' 
-            : 'translateZ(30px)';
+            ? 'rotateY(180deg) translateZ(60px)' 
+            : 'translateZ(60px)';
           face.style.fontSize = '22px';
         } else if (face.classList.contains('logo-top') || face.classList.contains('logo-bottom')) {
           face.style.transform = face.classList.contains('logo-bottom') 
-            ? 'rotateX(-90deg) translateZ(30px)' 
-            : 'rotateX(90deg) translateZ(30px)';
+            ? 'rotateX(-90deg) translateZ(60px)' 
+            : 'rotateX(90deg) translateZ(60px)';
           face.style.fontSize = '18px';
         } else {
           face.style.transform = face.classList.contains('logo-left') 
-            ? 'rotateY(-90deg) translateZ(30px)' 
-            : 'rotateY(90deg) translateZ(30px)';
+            ? 'rotateY(-90deg) translateZ(60px)' 
+            : 'rotateY(90deg) translateZ(60px)';
           face.style.fontSize = '16px';
         }
       });
@@ -1484,9 +1452,9 @@ no_comments: true
     const title = document.getElementById('mainTitle');
     const themeLogo = document.getElementById('themeLogo');
     
-    // Оптимизация для устройств с низкой производительностью
+    
     if (!detectLowPerformanceDevice() && typeof anime !== 'undefined') {
-      // Улучшенная анимация появления 3D лого
+      
       setTimeout(() => {
         anime({
           targets: '.logo',
@@ -1509,11 +1477,11 @@ no_comments: true
         });
       }, 500);
     } else {
-      // Для устройств с низкой производительностью просто показываем лого без анимации
+      
       document.querySelector('.logo').style.opacity = '1';
     }
     
-    // Добавляем пасхалки на верхнюю и нижнюю грани
+    
     const logoTop = document.querySelector('.logo-top');
     const logoBottom = document.querySelector('.logo-bottom');
     
@@ -1541,9 +1509,9 @@ no_comments: true
       });
     }
     
-    // Убираем переключение темы при клике на лого
+    
     if (themeLogo) {
-      // Только подсказка о функции кубика
+      
       themeLogo.title = "3D Assembly Cube";
     }
     
@@ -1571,7 +1539,7 @@ no_comments: true
       }
     });
     
-    // Observer для отлова изменения атрибутов темы в DOM
+    
     if('MutationObserver' in window) {
       const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
@@ -1591,21 +1559,21 @@ no_comments: true
       observer.observe(document.documentElement, { attributes: true });
     }
     
-    // Инициализация темы
+    
     const currentTheme = window.ThemeManager ? window.ThemeManager.getTheme() : 
       (document.documentElement.getAttribute('data-theme') || 
        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
        
     updateLogoTheme(currentTheme);
     
-    // Применяем настройки стилей для куба в зависимости от устройства
+    
     setTimeout(applyDeviceSpecificCubeStyles, 100);
     
-    // Проверяем, нужна ли горизонтальная прокрутка для код-блока при загрузке
+    
     setTimeout(checkCodeOverflow, 500);
   });
 
-  // Обновляем анимацию для появления строк кода с учетом производительности
+  
   function animateCodeLines() {
     const codeLines = document.querySelectorAll('.code-line');
     const isLowPerformanceDevice = detectLowPerformanceDevice();
@@ -1613,13 +1581,13 @@ no_comments: true
     codeLines.forEach((line, index) => {
       line.style.setProperty('--i', index);
       
-      // Для устройств с низкой производительностью показываем код сразу
+      
       if (isLowPerformanceDevice) {
         line.style.opacity = '1';
         line.style.transform = 'translateX(0)';
         line.style.animation = 'none';
       } else {
-        // Принудительное отображение, если анимация не сработала
+        
         setTimeout(() => {
           if (parseFloat(getComputedStyle(line).opacity) < 0.5) {
             line.style.opacity = '1';
@@ -1630,7 +1598,7 @@ no_comments: true
     });
   }
 
-  // Функция для проверки переполнения код-блока
+  
   function checkCodeOverflow() {
     const codeSnippet = document.querySelector('.code-snippet');
     if (codeSnippet) {
