@@ -1,6 +1,6 @@
 # Site Configuration
 site_name: A little bit of Assembler
-site_url: https://vadim-khristenko.github.io/A-little-bit-of-Assembler
+site_url: https://vadim-khristenko.github.io/A-little-bit-of-Assembler/
 site_author: Vadim Khristenko
 
 # Repository Settings
@@ -10,13 +10,16 @@ repo_url: https://github.com/Vadim-Khristenko/A-little-bit-of-Assembler
 # Theme Configuration
 theme:
   name: material
+  custom_dir: book-src/theme
   language: en
   features:
   # Navigation
   - navigation.instant
   - navigation.instant.progress
   - navigation.sections
-  - navigation.language
+  - navigation.tabs
+  - navigation.top
+  - navigation.tracking
 
   # Search
   - search.suggest
@@ -26,74 +29,82 @@ theme:
   # Content
   - content.code.copy
   - content.tooltips
-
   # Color Schemes
   palette:
-    # Dark mode (default)
-    - scheme: slate
-      primary: "#16002b"
-      accent: "rgba(225, 130, 10, 0.855)"
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
-      custom:
-        background: "#07000f"
-        primary-fg: "#e6e6e6"
+  # Dark mode (default)
+  - scheme: slate
+    primary: "#16002b"
+    accent: "rgba(225, 130, 10, 0.855)"
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to light mode
+    custom:
+      background: "#07000f"
+      primary-fg: "#e6e6e6"
+      comments_theme: "dark_high_contrast"
 
-    # Light mode
-    - scheme: default
-      primary: "#98c1ff"
-      accent: "rgba(55, 125, 135, 0.95)"
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-      custom:
-        background: "#f3f6ff"
-        primary-fg: "#2c2c2c"
+  # Light mode
+  - scheme: default
+    primary: "#98c1ff"
+    accent: "rgba(55, 125, 135, 0.95)"
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode
+    custom:
+      background: "#f3f6ff"
+      primary-fg: "#2c2c2c"
+      comments_theme: "light_high_contrast"
 
+# Extra settings
 extra:
   # Multi-language Support
   alternate:
   - name: English
-    link: /
+    link: /en/
     lang: en
   - name: Русский
     link: /ru/
     lang: ru
+  # Language selector
   language:
-  - en: English
-  - ru: Русский
-
-  # Comments Integration
-  script:
-  - |
-    <script src="https://giscus.app/client.js"
-            data-repo="Vadim-Khristenko/A-little-bit-of-Assembler"
-            data-repo-id="R_kgDON-3l9w"
-            data-category=""
-            data-category-id=""
-            data-mapping="url"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="top"
-            data-theme="dark_high_contrast"
-            data-lang: "{{ 'ru' if lang.t('language') == 'ru' else 'en' }}"
-            data-loading="lazy"
-            crossorigin="anonymous"
-            async>
-    </script>
+  - text: English
+    link: /en/
+    lang: en
+  - text: Русский
+    link: /ru/
+    lang: ru
+  # Social links
+  social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/Vadim-Khristenko
+  - icon: fontawesome/brands/telegram
+    link: https://t.me/VAI_Programmer
+  supported_languages: ['en', 'ru']
+  translation:
+    en:
+    - comments_header: Comments
+    - comments_footer: Comments are disabled for this page.
+    ru:
+    - comments_header: Комментарии
+    - comments_footer: Комментарии отключены для этой страницы.
 
 # Directory Structure
-docs_dir: test-book-src
+docs_dir: book-src
+
+# Navigation Structure
 nav:
-- index.md
-- getting-started.md
+- English:
+  - Introduction: en/README.md
+  - Getting Started: en/introduction/quick-start.md
+
+- Русский:
+  - Введение: ru/README.md
+  - Начало работы: ru/introduction/quick-start.md
 
 # JavaScript Dependencies
 extra_javascript:
-- https://giscus.app/client.js
-- https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+- https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js?features=es6
+- https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # CSS Dependencies
 extra_css:
@@ -106,6 +117,9 @@ markdown_extensions:
 - abbr
 - attr_list
 - md_in_html
+- meta
+- def_list
+- footnotes
 
 # Code Highlighting
 - pymdownx.highlight:
@@ -121,6 +135,7 @@ markdown_extensions:
 - pymdownx.mark
 - pymdownx.critic
 - pymdownx.tilde
+- pymdownx.caret
 
 # Special Features
 - pymdownx.arithmatex:

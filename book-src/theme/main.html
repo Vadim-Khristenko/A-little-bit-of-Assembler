@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {# --- Language detection and setup --- #}
+  {% set path = page.url %}
+  {% set default_lang = config.theme.language %}
+  {% set supported_langs = config.extra.supported_languages %}
+  {% set lang = default_lang %}
+  {% set path_segments = path.split('/') %}
+  {% if path_segments %}
+    {% set possible_lang = path_segments[0] %}
+      {% if possible_lang | length <= 5 and possible_lang in supported_langs %}
+          {% set lang = possible_lang %}
+      {% endif %}
+  {% endif %}
+
+  {# --- Render the original content --- #}
+  {{ super() }}
+
+  {# --- Theme Management System --- #}
+  <script>
+    window.ThemeManager = {
+      config: {
+        darkTheme: '{{ config.theme.palette[0].custom.comments_theme }}',
+        lightTheme: '{{ config.theme.palette[1].custom.comments_theme }}'
+      },
+      currentTheme: null,
+      sources: [
+        function() {
+          const metaTag = document.querySelector('meta[name="color-scheme"]');
+          if (metaTag) {
+            return metaTag.getAttribute('content');
+          }
+          return null;
+        },
+        function() {
+          const scheme = document.body.getAttribute('data-md-color-scheme');
+          if (scheme) {
+            return scheme === 'slate' ? 'dark' : 'light';
+          }
+          return null;
+        },
+        function() {
+          try {
+            const palette = JSON.parse(localStorage.getItem('__palette'));
+            if (palette && palette.index !== undefined) {
+              return palette.index === 0 ? 'dark' : 'light'; 
+            }
+          } catch(e) {}
+          return null;
+        },
+        function() {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+          }
+          return 'light';
+        }
+      ],
+      init: function() {
+        this.detectTheme();
+        this.setupObservers();
+        return this;
+      },
+      getTheme: function() {
+        return this.currentTheme;
+      },
+      getComponentTheme: function(component) {
+        if (component === 'giscus') {
+          return this.currentTheme === 'dark' ? this.config.darkTheme : this.config.lightTheme;
+        }
+        return this.currentTheme;
+      },
+      
+      detectTheme: function() {
+        let detectedTheme = null;
+        for (let i = 0; i < this.sources.length; i++) {
+          detectedTheme = this.sources[i]();
+          if (detectedTheme) break;
+        }
+        if (detectedTheme !== this.currentTheme) {
+          this.currentTheme = detectedTheme;
+          this.broadcastThemeChange();
+        }
+        
+        return this.currentTheme;
+      },
+      
+      setupObservers: function() {
+        const metaTag = document.querySelector('meta[name="color-scheme"]');
+        if (metaTag) {
+          new MutationObserver(() => this.onThemeSourceChanged())
+            .observe(metaTag, {
+              attributes: true,
+              attributeFilter: ['content']
+            });
+        }
+        new MutationObserver(() => this.onThemeSourceChanged())
+          .observe(document.body, {
+            attributes: true,
+            attributeFilter: ['data-md-color-scheme', 'class']
+          });
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        if (darkModeMediaQuery.addEventListener) {
+          darkModeMediaQuery.addEventListener('change', () => this.onThemeSourceChanged());
+        }
+      },
+      
+      onThemeSourceChanged: function() {
+        this.detectTheme();
+      },
+      
+      broadcastThemeChange: function() {
+        window.dispatchEvent(new CustomEvent('themechange', {
+          detail: { theme: this.currentTheme }
+        }));
+      },
+      
+      onThemeChange: function(callback) {
+        window.addEventListener('themechange', (event) => {
+          callback(event.detail.theme);
+        });
+      }
+    };
+    window.ThemeManager.init();
+  </script>
+
+  {# --- Comments section --- #}
+  {% if not page.is_homepage and not page.meta.no_comments %}
+    <div class="giscus-comments">
+      <script>
+        window.giscus_config = {
+          repo: 'Vadim-Khristenko/A-little-bit-of-Assembler',
+          repoId: 'R_kgDON-3l9w',
+          category: 'Announcements',
+          categoryId: 'DIC_kwDON-3l984CbkVo',
+          
+          // Mapping and behavior options
+          mapping: 'url',
+          reactionsEnabled: true,
+          emitMetadata: false,
+          
+          // Theme and localization
+          theme: window.ThemeManager.getComponentTheme('giscus'),
+          lang: '{{ lang }}',
+          
+          // Loading settings
+          loading: 'lazy',
+          crossorigin: 'anonymous',
+          async: true
+        };
+        
+        // Create and inject Giscus script with configuration
+        const giscusScript = document.createElement('script');
+        giscusScript.src = 'https://giscus.app/client.js';
+        
+        Object.entries(window.giscus_config).forEach(([key, value]) => {
+          const dataKey = 'data-' + key.replace(/([A-Z])/g, '-$1').toLowerCase();
+          giscusScript.setAttribute(dataKey, value);
+        });
+        document.currentScript.parentNode.appendChild(giscusScript);
+        window.ThemeManager.onThemeChange(function() {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (iframe) {
+            iframe.contentWindow.postMessage(
+              { giscus: { setConfig: { theme: window.ThemeManager.getComponentTheme('giscus') } } },
+              'https://giscus.app'
+            );
+          }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          const observer = new MutationObserver((mutations) => {
+            for (let mutation of mutations) {
+              if (mutation.type === 'childList' && 
+                  document.querySelector('iframe.giscus-frame')) {
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe) {
+                  iframe.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme: window.ThemeManager.getComponentTheme('giscus') } } },
+                    'https://giscus.app'
+                  );
+                }
+                observer.disconnect();
+                break;
+              }
+            }
+          });
+          
+          observer.observe(document.querySelector('.giscus-comments'), {
+            childList: true,
+            subtree: true
+          });
+        });
+      </script>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
